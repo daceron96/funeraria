@@ -412,8 +412,8 @@ function generar_codigo_qr(id_entrada) {
         success: function (response) {
             var a = document.createElement('a');
             var file_name = "codigo_qr_"+response['data']+".png";
-            a.href = "http://localhost:8000/"+response['data'];
-            //a.href = "http://188.166.35.48:8000/"+response['data'];
+            //a.href = "http://localhost:8000/"+response['data'];
+            a.href = "http://188.166.35.48/"+response['data'];
             a.download = file_name;
             a.click();
             llenar_formulario_ingreso(id_entrada)
@@ -447,8 +447,8 @@ function llenar_formulario_ingreso(id_entrada,url) {
                 +"<a href='' class='col-3 btn-link link-primary text-decoration-none' id='descargar_img'>Descargar codigos qr</a>"
                 )
                 
-            $('#descargar_img').attr('href',"http://localhost:8000/"+response.url)
-            //$('#descargar_img').attr('href',"http://188.166.35.48:8000/"+response.url)
+            //$('#descargar_img').attr('href',"http://localhost:8000/"+response.url)
+            $('#descargar_img').attr('href',"http://188.166.35.48/"+response.url)
             $('#descargar_img').attr('download','codigo_qr.png')
         }
     })
