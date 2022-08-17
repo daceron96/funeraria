@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="modal fade" id="modal_detalle_entrada" tabindex="-1" aria-labelledby="modal_detalle_entrada"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h5 class="modal-title col-6" id="referencia"></h5>
+                    <h6 class="text-end col-5" id='estado'></h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-4" id="fecha_ingreso">
+                    </div>
+                    <div class="col-8 text-end" id="proveedor">
+                    </div>
+                    <div>
+                        <h6><b>Descripción de ingreso</b></h6>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col">Código</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center" id="detalle_entrada">
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary d-inline-flex" data-bs-dismiss="modal"><i class="bi bi-x-lg pe-1"></i>
+                        Cerrar</button>
+                    <button type="button" class="btn btn-outline-primary d-inline-flex" id='btn_editar'  ><i class="bi bi-pencil-square pe-1"></i> Actualizar</button>
+                    <button type="button" class="btn btn-outline-success d-inline-flex" id='btn_ingresar'  ><i class="bi bi-pencil-square pe-1"></i> Ingresar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

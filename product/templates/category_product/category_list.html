@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Lista de categorias{% endblock title %}
+
+{% block content %}
+<h2 class="d-flex justify-content-center pb-2"><i class="bi bi-clipboard-data pe-1"></i> Lista de categorias </h2>
+<div class="row">
+
+	<div class="d-grid gap-2 col d-md-flex">
+		<button type="button" class="btn btn-outline-primary d-inline-flex" onclick='limpiar_formulario()'>
+			<i class="bi bi-clipboard-plus pe-1"></i> Nueva Categoria
+		</button>
+
+	</div>
+</div>
+<hr>		
+<div class="row">
+	<table class="table table-hover ">
+		<thead>
+			<tr class="text-center">
+				<th scope="col">Nombre</th>
+				<th scope="col">Fecha de creacion</th>
+				<th scope="col">Fecha de actualizacion</th>
+				<th scope="col">Acción</th>
+			</tr>
+		</thead>
+		<tbody id="lista_categorias" class='text-center'>
+			{%for category in object_list%}
+			<tr id='row_{{category.id}}'>
+				<td id='td_nombre_{{category.id}}'>{{category.name}}</td>
+				<td>{{category.created_date}}</td>
+				<td id='td_updated_{{category.id}}'>{{category.modified_date}}</td>
+
+				<td>
+					<button type="button" class="btn btn-primary btn-sm d-inline-flex  px-3"
+						onclick='obtener_datos_categoria({{category.id}})'>
+						<i class="bi bi-pencil-square pe-1"></i> Editar
+					</button>
+				</td>
+			</tr>
+			{%endfor%}
+		</tbody>
+	</table>
+</div>
+{% include 'core/formulario.html' %}
+{% include 'core/success.html' %}
+
+{% endblock content %}
+
+{%block js%}
+<script src="{% static '/category/style.js' %} "></script>
+<script src="{% static '/core/style.js' %} "></script>
+{% endblock js %}

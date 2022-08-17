@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="modal fade" id="modal_formulario_salida" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modal_formulario_salida"
+        aria-hidden="true">
+        <div class="modal-dialog  modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title d-inline-flex" id="titulo_form"><i class="bi bi-clipboard-plus-fill pe-1">
+                            </i>Registro de nueva salida</h5>
+                    <button type="button" class="btn-close" onclick='limpiar_formulario_salida()' aria-label="Close"></button>
+                </div>
+                <div class="modal-body row">
+                    <form  method="POST" id="formulario" class="row">
+                        {%csrf_token%}
+                        
+                        {%for field in form %}
+                            {% if field.label == "Observacion"%}
+                                <div class="form-floating mb-3 col-12">
+                                    {{field}}
+                                    <label for="{{ field.id_for_label }}" class="ms-3"><b>{{field.label}}</b></label>
+                                    <div class="invalid-feedback text-center text-danger" id="invalid_{{field.name}}"></div>
+                                </div>
+                            {%else %}
+                                <div class="form-floating mb-3 col-6">
+                                    {{field}}
+                                    <label for="{{ field.id_for_label }}" class="ms-3"><b>{{field.label}}</b></label>
+                                    <div class="invalid-feedback text-center text-danger" id="invalid_{{field.name}}"> </div>
+                                </div>
+                            {%endif %}
+                        {% endfor %}
+                        <div class="row " >
+                            <h6 class="mb-3"><b>Producto a registrar</b></h6>
+                            <div class="form-floating mb-3 col-9">
+                                <input type="text" class="form-control" id="id_codigo" onkeyup='mayus(this)' autocomplete='off'>
+                                <label for="id_codigo" class="ms-3"><b>Código de producto </b></label>
+                                <div class="invalid-feedback text-center text-danger" id="invalid_codigo"> </div>
+                                <div class="valid-feedback text-center" id='valid_codigo'></div>
+
+                            </div>
+                            <div class="col-3 mt-2">
+                                <button class="btn btn-primary " type="button" onclick="agregar_lista()"><i class="bi bi-plus-circle"></i>
+                                    Agregar</button>
+                            </div>
+                            <div class="row">
+                                <h6 class="text-center"><b>Lista de productos en salida</b></h6>
+                                <table class="text-center">
+                                    <thead>
+                                        <tr >
+                                            <th scope="col">Código</th>
+                                            <th scope="col">Producto</th>
+                                            <th scope="col">Categoria</th>
+                                            <th scope="col">Cantidad</th>
+                                            <th scope="col">Acción</th>
+                                        </tr>
+                                        <tbody id="lista_productos">
+                                            
+                                        </tbody>
+                                    </thead>
+                                </table>
+                                <div class="visually-hidden mt-2 text-center text-danger" id="mensaje_error">Debes ingresar almenos un producto</div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick='limpiar_formulario_salida()'><i class="bi bi-x-lg"></i>
+                        Cerrar</button>
+                    <button type="button" id='btn_guardar' onclick='crear_salida()' class="btn btn-primary"><i class="bi bi-pencil-square"></i> Guardar </button>
+                    <button type="button" id='btn_actualizar' class="btn btn-primary visually-hidden"><i class="bi bi-pencil-square"></i> Actualizar </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

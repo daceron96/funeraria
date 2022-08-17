@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="modal fade" id="modal_detalle_salida" tabindex="-1" aria-labelledby="modal_detalle_salida"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h5 class="modal-title col-6" id="referencia"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-6" id="fecha_registro">
+                    </div>
+                    <div class="col-6" id="tipo_salida">
+                    </div>
+                    <div class="col-6" id="identificador">
+                    </div>
+                    <div class="col-6" id="nombre_cliente">
+                    </div>
+                    <div class="col-12" id="observacion">
+                    </div>
+                    <div>
+                        <h6><b>Descripción de salida</b></h6>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col">#</th>
+                                <th scope="col">Código</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center" id="detalle_salida">
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary d-inline-flex" data-bs-dismiss="modal"><i class="bi bi-x-lg pe-1"></i>
+                        Cerrar</button>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

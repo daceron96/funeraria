@@ -1,0 +1,52 @@
+{% extends 'core/base.html' %}
+{% load static%}
+{%block title %}Lista tipo de salida{%endblock%}
+
+{% block content %}
+<h2 class="d-flex justify-content-center pb-2"><i class="bi bi-clipboard-data pe-1"></i> Lista de tipos de salida </h2>
+<div class="row">
+
+	<div class="d-grid gap-2 col d-md-flex">
+		<button type="button" class="btn btn-outline-primary d-inline-flex" onclick='limpiar_formulario()'>
+			<i class="bi bi-clipboard-plus pe-1"></i> Nuevo tipo de salida
+		</button>
+
+	</div>
+</div>
+<hr>	
+    <div class="row" >
+		<table class="table text-center ">
+			<thead>
+				<tr class="text-center">
+					<th scope="col" >Nombre</th>
+					<th scope="col" >Fecha de creacion</th>
+					<th scope="col" >Fecha de edición</th>
+					<th scope="col" >Acción</th>
+				</tr>
+			</thead>
+			<tbody id='lista_tipo_salida'>
+				{%for tipo_salida in object_list%}
+				<tr class="text-center" id='row_{{tipo_salida.id}}'>
+					<td id='td_nombre_{{tipo_salida.id}}'>{{tipo_salida.name}}</td>
+					<td>{{tipo_salida.created_date}}</td>
+					<td id='td_updated_{{tipo_salida.id}}'>{{tipo_salida.modified_date}}</td>
+					
+					<td>
+						<button type="button" class="btn btn-primary btn-sm d-inline-flex  px-3" onclick='obtener_datos_tipo_salida({{tipo_salida.id}})'>
+							<i class="bi bi-pencil-square pe-1"></i> Editar
+						</button>
+					</td>
+				</tr>
+				{%endfor%}
+			</tbody>
+		</table>
+	</div>
+    {% include 'core/formulario.html' %}
+	{% include 'core/success.html' %}
+
+{% endblock content %}
+
+{%block js%} 
+    <script src="{% static '/tipo_salida/style.js' %} "></script>
+	<script src="{% static '/core/style.js' %} "></script>
+{% endblock js %}

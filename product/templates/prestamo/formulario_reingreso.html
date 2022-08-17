@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="modal fade " id="modal_formulario_reingreso" data-bs-backdrop="static" tabindex="-1"
+        aria-labelledby="modal_formulario_reingreso" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h5 class="modal-title col-6" id="id_titulo_modal"><b>Registro de devoluvion de prestamo </b></h5>
+                    <button type="button" class="btn-close" onclick='limpiar_formulario_reingreso()' ></button>
+                </div>
+                <div class="modal-body row ">
+                    <div class="row mb-3" id="cabezera_ingreso">
+                    </div>
+                    <form method="POST" id="formulario_ingreso">
+                        {%csrf_token%}
+                        <div class="row pb-3 justify-content-center" id="datos_registro">
+                            <div class="form-floating mb-3 col-6">
+                                <input type="text" class="form-control" id="codigo_reingreso" autocomplete='off' onkeyup="mayus(this)">
+                                <label for="codigo" class="ms-3"><b>Codigo QR de producto </b></label>
+                                <div class="invalid-feedback text-center text-danger" id="invalid_codigo_reingreso"> </div>
+                                <div class="valid-feedback" id='valid_codigo_reingreso'></div>
+                            </div>
+                            <div class="col-2 mt-2">
+                                <button class="btn btn-primary d-inline-flex" id='btn_ingresar_producto' type="button" onclick='actualizar_reingreso()' ><i class="bi bi-plus-circle pe-1" ></i> Ingresar</button>
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <div class="row">
+                                <h6 class="text-center"><b>Lista de productos en espera</b></h6>
+                                <table class="text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Código</th>
+                                            <th scope="col">Producto</th>
+                                            <th scope="col">Categoria</th>
+                                            <th scope="col">En espera</th>
+                                            <th scope="col">Ingresado</th>
+                                        </tr>
+                                        <tbody id="lista_productos_reingreso">
+                                            
+                                        </tbody>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary d-inline-flex" onclick='limpiar_formulario_reingreso()'><i class="bi bi-x-lg pe-1"></i>
+                        Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary disabled d-inline-flex" id='btn_crear_reingreso'><i class="bi bi-clipboard-plus pe-1"></i> Ingresar </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

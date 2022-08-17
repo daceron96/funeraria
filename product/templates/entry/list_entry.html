@@ -1,0 +1,88 @@
+{%extends 'core/base.html'%}
+{% load static %}
+{%block title%}Lista de entradas{%endblock %}
+{%block content %}
+<h2 class="d-flex justify-content-center pb-2"><i class="bi bi-clipboard-data pe-1"></i> Lista de entradas </h2>
+<div class="row">
+	<div class="input-group col">
+		<input type="text" class="form-control" placeholder="Buscar entrada"
+			aria-describedby="btn_search" id='input_search'>
+		<button class="btn btn-outline-primary" type="button" id="btn_search" onclick="filtrar_entrada_referencia()">Buscar</button>
+	</div>
+	
+	<div class="col">
+		<select class="form-select" aria-label="Default select example" id='select_supplier' onchange="filtrar_entrada_proveedor()">
+			<option value="-1">Todos los proveedores</option>
+			{% for supplier in suppliers %}
+			<option value="{{supplier.id}}">{{supplier.name}}</option>
+			{% endfor %}
+		  </select>
+	</div>
+	<div class="d-grid gap-2 col d-md-flex">
+        <button type="button" class="btn btn-outline-primary d-inline-flex " onclick='contenido_formulario()'>
+            <i class="bi bi-clipboard-plus-fill pe-1"></i> Nueva entrada
+        </button>
+		
+	</div>
+	
+	
+</div>
+
+<hr>
+
+       
+
+<div class="row">
+    <table class="table text-center">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">Referencia</th>
+                <th scope="col">Proveedor</th>
+                <th scope="col">Fecha de registro</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acción</th>
+            </tr>
+        </thead>
+        <tbody id='lista_entradas'>
+            {%for entrada in object_list%}
+            <tr id='row_{{entrada.id}}'>
+                <td>{{entrada.reference}}</td>
+                <td>{{entrada.supplier}}</td>
+                <td>{{entrada.created_date}}</td>
+                {%if not entrada.in_wait %}
+					<td id='estado_{{entrada.id}}'><span class="badge bg-success px-4 py-2">Ingresado</span></td>
+				{%else %}
+					<td id='estado_{{entrada.id}}'><span class="badge bg-danger px-4 py-2">En espera</span></td>
+				{%endif%}
+                <td>
+                    
+                    <button type="button" class="btn btn-primary btn-sm d-inline-flex  px-3 " onclick='detalle_entrada({{entrada.id}})'>
+                        <i class="bi bi-search pe-1"></i> Ver
+                    </button>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    
+</div>
+
+{% include 'entry/detalle_entrada.html' %}
+{% include 'entry/formulario_entrada.html' %}
+{% include 'entry/formulario_ingreso.html' %}
+{% include 'entry/confirmacion_qr.html' %}
+{% include 'core/success.html' %}
+
+{%endblock %}
+{%block js%}
+
+<script src="{% static '/core/style.js' %} "></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="{% static '/entry/style.js' %} "></script>
+{%endblock%}
+
+{%block link%}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href={%static 'entry/style.css' %}>
+{%endblock%}

@@ -1,0 +1,40 @@
+<div class="container ">
+    <div class="modal fade" id="modal_detalle_producto" tabindex="-1" aria-labelledby="modal_detalle_producto"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cabeza"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-6">
+                        <h6><b>Descripción de inventario</b></h6>
+                    </div>
+                    <div class="col-6 text-end">
+                        <h6 id="fecha_registro"></h6>
+                    </div>
+                    <table class="table">
+                        <thead class="visually-hidden" id="thead">
+                            <tr class="text-center">
+                                <th scope="col">Proveedor</th>
+                                <th scope="col">Nit - Identificacion</th>
+                                <th scope="col">En bodega</th>
+                                <th scope="col">En Espera</th>
+                            </tr>
+                        </thead>
+                        <tbody id="proveedores" class='text-center'>
+                            
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary d-inline-flex" data-bs-dismiss="modal"><i class="bi bi-x-lg pe-1"></i>
+                        Cerrar</button>
+                    <button type="button" id='btn_act_producto' class="btn btn-outline-primary d-inline-flex" data-bs-dismiss="modal"  ><i class="bi bi-pencil-square pe-1"></i> Actualizar </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

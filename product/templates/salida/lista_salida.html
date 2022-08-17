@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{%block title%}Lista salidas{%endblock%}
+{% block content %}
+<h2 class="d-flex justify-content-center pb-2"><i class="bi bi-clipboard-data pe-1"></i> Lista de salidas </h2>
+<div class="row">
+	<div class="input-group col">
+		<input type="text" class="form-control" placeholder="Buscar salida"
+			aria-describedby="btn_search">
+		<button class="btn btn-outline-primary" type="button" id="btn_search">Buscar</button>
+	</div>
+	
+	<div class="d-grid gap-2 col d-md-flex">
+        <button type="button" class="btn btn-outline-primary d-inline-flex " onclick='contenido_formulario()'>
+            <i class="bi bi-clipboard-plus-fill pe-1"></i> Nueva salida
+        </button>
+		
+	</div>
+	
+	
+</div>
+
+<hr>
+
+<div class="row" >
+    <table class="table text-center table-hover">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">Referencia</th>
+                <th scope="col" >Tipo Salida</th>
+                <th scope="col" >Fecha Registro</th>
+                <th scope="col" >Acción</th>
+            </tr>
+        </thead>
+        <tbody id='lista_salidas'>
+            {%for salida in object_list%}
+            <tr id='row_{{salida.id}}'>
+                <td>{{salida.reference}}</td>
+                <td>{{salida.exit_type}}</td>
+                <td>{{salida.created_date}}</td>
+                
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm d-inline-flex  px-3 " onclick='detalle_salida({{salida.id}})'>
+                        <i class="bi bi-search pe-1"></i> Ver
+                    </button>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{%include 'salida/formulario_salida.html'%}
+{%include 'salida/detalle_salida.html'%}
+{%include 'core/success.html' %}
+
+{% endblock content %}
+{%block js%} 
+	<script src="{% static '/salida/style.js' %} "></script>
+	<script src="{% static '/core/style.js' %} "></script>
+{%endblock%}

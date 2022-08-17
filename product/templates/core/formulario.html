@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="modal fade" id="modal_formulario" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modal_formulario"
+        aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title d-inline-flex" id="titulo_form"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row">
+                    <form  method="POST" id="formulario">
+                        {%csrf_token%}
+                        
+                        {%for field in form %}
+                        <div class="form-floating mb-3">
+                            {{field}}
+                            <label for="{{ field.id_for_label }}"><b>{{field.label}}</b></label>
+                            <div class="invalid-feedback text-center text-danger" id="invalid_{{field.name}}">  
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary d-inline-flex " data-bs-dismiss="modal"><i class="bi bi-x-lg pe-1"></i>
+                        Cerrar</button>
+                    <button type="button" id='btn_guardar' class="btn btn-primary d-inline-flex "><i class="bi bi-pencil-square pe-1"></i> Guardar </button>
+                    <button type="button" id='btn_actualizar' class="btn btn-primary visually-hidden d-inline-flex "><i class="bi bi-pencil-square pe-1"></i> Actualizar </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
