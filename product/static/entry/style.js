@@ -413,7 +413,7 @@ function generar_codigo_qr(id_entrada) {
             var a = document.createElement('a');
             var file_name = "codigo_qr_"+response['data']+".png";
             //a.href = "http://localhost:8000/"+response['data'];
-            a.href = "http://188.166.35.48/"+response['data'];
+            a.href = "http://164.90.156.156/"+response['data'];
             a.download = file_name;
             a.click();
             llenar_formulario_ingreso(id_entrada)
@@ -448,7 +448,7 @@ function llenar_formulario_ingreso(id_entrada,url) {
                 )
                 
             //$('#descargar_img').attr('href',"http://localhost:8000/"+response.url)
-            $('#descargar_img').attr('href',"http://188.166.35.48/"+response.url)
+            $('#descargar_img').attr('href',"http://164.90.156.156/"+response.url)
             $('#descargar_img').attr('download','codigo_qr.png')
         }
     })

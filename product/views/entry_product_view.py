@@ -82,6 +82,22 @@ def create_product_detail(new_detail,new_entry):
 
 def create_qr_code(request):
 	if request.GET:
+			
+		# import EAN13 from barcode module
+		from barcode import EAN13
+		
+		# Make sure to pass the number as string
+		number = '5901234123457'
+		
+		# Now, let's create an object of EAN13
+		# class and pass the number
+		my_code = EAN13(number)
+		
+		# Our barcode is ready. Let's save it.
+		my_code.save("new_code")
+
+def create_qr_code(request):
+	if request.GET:
 		entry = EntryProduct.objects.get(id = request.GET['id_entrada'])
 		if(not entry.created_qr):
 			detail_list = DetailEntryProduct.objects.filter(entry_product__id = entry.id)

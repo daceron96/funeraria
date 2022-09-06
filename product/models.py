@@ -1,7 +1,4 @@
-import imp
-from itertools import product
-from lib2to3.pytree import Base
-from tabnanny import verbose
+
 from django.db import models
 from core.models import BaseModel
 

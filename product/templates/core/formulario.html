@@ -10,7 +10,7 @@
                 <div class="modal-body row">
                     <form  method="POST" id="formulario">
                         {%csrf_token%}
-                        
+                        <input type='hidden' value='{{action}}'>
                         {%for field in form %}
                         <div class="form-floating mb-3">
                             {{field}}
